@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Смирнов Никита</title>
+</head>
+<body>
+<script>
+    class FitnessBracelet {
+        constructor(ram_size, sup_platforms, sensors) {
+            this.ram_size = ram_size; 
+            this.sup_platforms = sup_platforms;
+            this.sensors = sensors;
+        }
+
+        get getInfo() {
+            return `${this.ram_size}, ${this.sup_platforms}, ${this.sensors}`
+        }
+        set getInfo(value) {
+            [this.ram_size, this.sup_platforms, this.sensors] = value.split(" ");
+        }
+        showInfo() {
+            console.log(`
+                Объем оперативной памяти: ${this.ram_size}
+                Поддерживаемые платформы: ${this.sup_platforms}
+                Датчики: ${this.sensors}
+            `)
+        }
+    }
+    class ReleaseInfoFitnessBracelet extends FitnessBracelet {
+        constructor (date, price, ram_size, sup_platforms, sensors) {
+            super(ram_size, sup_platforms, sensors);
+            this.releaseDate = date;
+            this.price = price;
+        }
+
+        showInfo() {
+            console.log(`
+            Обновленная информация
+                Дата релиза: ${this.releaseDate}
+                Цена: ${this.price}
+                Объем оперативной памяти: ${this.ram_size}
+                Поддерживаемые платформы: ${this.sup_platforms}
+                Датчики: ${this.sensors}
+            `)
+        }
+    }
+
+    const braceletArray = [];
+
+    braceletArray.push(new ReleaseInfoFitnessBracelet("00/00/0000", 5000, 4000, "PC", 5));
+    braceletArray.push(new ReleaseInfoFitnessBracelet("11/11/1111", 9000, 4000, "PC", 9));
+    braceletArray.push(new ReleaseInfoFitnessBracelet("22/22/2222", 4000, 2000, "PC", 7));
+    braceletArray.push(new ReleaseInfoFitnessBracelet("33/33/3333", 2000, 8000, "PC", 6));
+    braceletArray.push(new ReleaseInfoFitnessBracelet("44/44/4444", 15000, 16000, "PC", 4));
+    braceletArray.push(new ReleaseInfoFitnessBracelet("55/55/5555", 7000, 10000, "PC", 5));
+
+    let expensiveBracelet = braceletArray[0];
+    let cheapBracelet = braceletArray[0];
+    let totalSum = braceletArray.reduce((accumulator, value) => accumulator += value.price, 0);
+    let averageSum = totalSum / braceletArray.length;
+
+    braceletArray.forEach(bracelet => {
+        if (expensiveBracelet.price < bracelet.price) {
+            expensiveBracelet = bracelet;
+        }
+        if (cheapBracelet.price > bracelet.price) {
+            cheapBracelet = bracelet;
+        }
+    })
+
+    console.log('Дешевый браслет: ', cheapBracelet);
+    console.log('Дорогой браслет: ', expensiveBracelet);
+    console.log('Итоговая сумма: ', totalSum);
+    console.log('Средняя сумма: ', averageSum);
+    console.log('Количество объектов состоимостью выше средней: ', braceletArray.filter(braclet => braclet.price > averageSum).length)
+</script>
+</body>
+</html>

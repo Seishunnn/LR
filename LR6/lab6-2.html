@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Смирнов Никита</title>
+</head>
+<body>
+<script>
+    function FitnessBracelet (ram_size, sup_platforms, sensors) {
+        this.ram_size = ram_size;
+        this.sup_platforms = sup_platforms;
+        this.sensors = sensors;
+        this.show = function () {
+            console.log(`
+                Объем оперативной памяти: ${this.ram_size}
+                Поддерживаемые платформы: ${this.sup_platforms}
+                Датчики: ${this.sensors}
+            `)
+        }
+    }
+    Object.defineProperties(FitnessBracelet.prototype, {
+        "getInfo": {
+            get () {
+                return `${this.ram_size}, ${this.sup_platforms}, ${this.sensors}`
+            },
+            set (value) {
+                [this.ram_size, this.sup_platforms, this.sensors] = value.split(" ");
+            }
+        }
+    })
+
+    FitnessBracelet.prototype.releaseDate = "00/00/0000";
+    FitnessBracelet.prototype.showInfo = function () {
+        console.log(`Информация о браслете:
+            ram_size: ${this.ram_size}
+            sup_platforms: ${this.sup_platforms}
+            sensors: ${this.sensors}
+        `)
+    }
+
+    let a = new FitnessBracelet(12, "PC", 500);
+</script>
+</body>
+</html>
