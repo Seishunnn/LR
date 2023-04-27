@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 6</title>
+</head>
+<body>
+    <style>
+        * {
+            user-select: none;
+        }
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        li {
+          cursor: pointer;
+        }
+        .selected {
+          color: orange;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+        }
+        li.selected {
+            color: orange;
+        }
+        li:hover {
+            font-weight: bold;
+        }
+    </style>
+    <ul id="book-list">
+        <li>Михаил Булгаков - Мастер и Маргарита</li>
+        <li>Рэй Брэдбери - 451 градус по Фаренгейту</li>
+        <li>Джордж Оруэлл - 1984</li>
+        <li>Ричард Фейнман - Вы, конечно, шутите, мистер Фейнман!</li>
+        <li>Лев Толстой - Война и мир</li>
+        <li>Джеймс Джойс - Улисс</li>
+        <li>Владимир Набоков - Лолита</li>
+        <li>Уильям Фолкнер - Звук и ярость</li>
+        <li>Ральф Эллисон - Человек-невидимка</li>
+        <li>Вирджиния Вулф - На маяк</li>
+        <li>Михаил Булгаков - Мастер и Маргарита</li>
+        <li>Рэй Брэдбери - 451 градус по Фаренгейту</li>
+        <li>Джордж Оруэлл - 1984</li>
+        <li>Ричард Фейнман - Вы, конечно, шутите, мистер Фейнман!</li>
+        <li>Лев Толстой - Война и мир</li>
+        <li>Джеймс Джойс - Улисс</li>
+        <li>Владимир Набоков - Лолита</li>
+        <li>Уильям Фолкнер - Звук и ярость</li>
+        <li>Ральф Эллисон - Человек-невидимка</li>
+        <li>Вирджиния Вулф - На маяк</li>
+        <li>Михаил Булгаков - Мастер и Маргарита</li>
+        <li>Рэй Брэдбери - 451 градус по Фаренгейту</li>
+        <li>Джордж Оруэлл - 1984</li>
+        <li>Ричард Фейнман - Вы, конечно, шутите, мистер Фейнман!</li>
+        <li>Лев Толстой - Война и мир</li>
+        <li>Джеймс Джойс - Улисс</li>
+        <li>Владимир Набоков - Лолита</li>
+        <li>Уильям Фолкнер - Звук и ярость</li>
+        <li>Ральф Эллисон - Человек-невидимка</li>
+        <li>Вирджиния Вулф - На маяк</li>
+      </ul>
+    <script>
+        const bookList = document.getElementById('book-list');
+        let selectedItems = new Set(); // Множество выбранных элементов
+
+    function selectItem(item, ctrlKey, shiftKey) {
+        if (ctrlKey) {
+            item.classList.toggle('selected');
+            if (item.classList.contains('selected')) {
+                selectedItems.add(item);
+            } else {
+                selectedItems.delete(item);
+            }
+        } else if (shiftKey && selectedItems.size > 0) {
+            const firstItem = [...selectedItems][0];
+            let rangeSelected = false;
+            bookList.querySelectorAll('li').forEach((li) => {
+            if (li === firstItem || li === item) {
+                rangeSelected = !rangeSelected;
+                li.classList.add('selected');
+                if (rangeSelected) {
+                selectedItems.add(li);
+                } else {
+                selectedItems.delete(li);
+                }
+            } else if (rangeSelected) {
+                li.classList.add('selected');
+                selectedItems.add(li);
+            } else {
+                li.classList.remove('selected');
+                selectedItems.delete(li);
+            }
+            });
+        } else {
+            item.classList.toggle('selected');
+            if (item.classList.contains('selected')) {
+                selectedItems.clear();
+                selectedItems.add(item);
+            } else {
+                selectedItems.delete(item);
+            }
+        }
+    }
+
+    bookList.querySelectorAll('li').forEach((li) => {
+    li.addEventListener('click', (event) => {
+        selectItem(event.currentTarget, event.ctrlKey, event.shiftKey);
+    });
+    });
+</script>
+</body>
+</html>

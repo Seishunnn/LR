@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 1</title>
+</head>
+<body>
+    <style>
+        table {
+            border: 1px solid #000;
+        }
+        table * {
+            border: 1px solid #000;
+        }
+    </style>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Дата релиза</th>
+                <th>Цена</th>
+                <th>Объем оперативной памяти</th>
+                <th>Поддерживаемые платформы</th>
+                <th>Датчики</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        </table>
+<script>
+    class FitnessBracelet {
+        constructor(ram_size, sup_platforms, sensors) {
+            this.ram_size = ram_size; 
+            this.sup_platforms = sup_platforms;
+            this.sensors = sensors;
+        }
+
+        get getInfo() {
+            return `${this.ram_size}, ${this.sup_platforms}, ${this.sensors}`
+        }
+        set getInfo(value) {
+            [this.ram_size, this.sup_platforms, this.sensors] = value.split(" ");
+        }
+        showInfo() {
+            console.log(`
+                Объем оперативной памяти: ${this.ram_size}
+                Поддерживаемые платформы: ${this.sup_platforms}
+                Датчики: ${this.sensors}
+            `)
+        }
+    }
+
+    class ReleaseInfoFitnessBracelet extends FitnessBracelet {
+        constructor (date, price, ram_size, sup_platforms, sensors) {
+            super(ram_size, sup_platforms, sensors);
+            this.releaseDate = date;
+            this.price = price;
+        }
+
+        showInfo() {
+            console.log(`
+            Обновленная информация
+                Дата релиза: ${this.releaseDate}
+                Цена: ${this.price}
+                Объем оперативной памяти: ${this.ram_size}
+                Поддерживаемые платформы: ${this.sup_platforms}
+                Датчики: ${this.sensors}
+            `)
+        }
+    }
+
+    const bracelets = [];
+    for (let i = 0; i < 10; i++) {
+        bracelets[i] = new ReleaseInfoFitnessBracelet("12/34/5678", 5000, 15, "PC", 2);
+    }
+
+    let table = document.getElementById("table");
+    let tbody = table.getElementsByTagName("tbody")[0];
+
+    for (let i = 0; i < bracelets.length; i++) {
+            let bracelet = bracelets[i];
+            let row = document.createElement("tr");
+
+            let releaseDate = document.createElement("td");
+            let price = document.createElement("td");
+            let ram_size = document.createElement("td");
+            let sup_platforms = document.createElement("td");
+            let sensors = document.createElement("td");
+    
+            releaseDate.innerHTML = bracelet.releaseDate;
+            price.innerHTML = bracelet.price;
+            ram_size.innerHTML = bracelet.ram_size;
+            sup_platforms.innerHTML = bracelet.sup_platforms;
+            sensors.innerHTML = bracelet.sensors;
+    
+            row.appendChild(releaseDate);
+            row.appendChild(price);
+            row.appendChild(ram_size);
+            row.appendChild(sup_platforms);
+            row.appendChild(sensors);
+    
+            tbody.appendChild(row);
+        }
+</script>
+</body>
+</html>
