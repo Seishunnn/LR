@@ -28,3 +28,10 @@
 [Задание 2](https://seishunnn.github.io/LR/LR9/lab9-2.html)   
 [Задание 3](https://seishunnn.github.io/LR/LR9/lab9-3.html)      
 [Задание 4](https://seishunnn.github.io/LR/LR9/lab9-4.html) Имеется Музыка       
+
+# LR10
+---
+[Задание 1](https://seishunnn.github.io/LR/LR10/lab10-1.html)   
+[Задание 2](https://seishunnn.github.io/LR/LR10/lab10-2.html)   
+[Задание 3](https://seishunnn.github.io/LR/LR10/lab10-3.html)      
+[Задание 4](https://seishunnn.github.io/LR/LR10/lab10-4.html) 
