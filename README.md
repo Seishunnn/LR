@@ -35,3 +35,9 @@
 [Задание 2](https://seishunnn.github.io/LR/LR10/lab10-2.html)   
 [Задание 3](https://seishunnn.github.io/LR/LR10/lab10-3.html)      
 [Задание 4](https://seishunnn.github.io/LR/LR10/lab10-4.html) 
+
+# LR11
+---
+[Задание 1](https://seishunnn.github.io/LR/LR10/lab11-1.html)   
+[Задание 2](https://seishunnn.github.io/LR/LR10/lab11-2.html)   
+[Задание 3](https://seishunnn.github.io/LR/LR10/lab11-3.html)      
